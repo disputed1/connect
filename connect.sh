@@ -16,7 +16,7 @@ fi
 
 #--- SSH Connect Script ---#
 
-echo -n "Enter your Employee ID:"
+echo -n "Enter your username:"
 read un
 
 #echo -n "Enter your password:"
