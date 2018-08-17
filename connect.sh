@@ -19,9 +19,6 @@ fi
 echo -n "Enter your username:"
 read un
 
-#echo -n "Enter your password:"
-#read pass
-
 if [[  -f ${iparg} ]];
     then
       for i in `cat $iparg` ;
