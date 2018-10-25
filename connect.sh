@@ -5,9 +5,9 @@
 iparg=$1
 cmd=$2
 
-#--- Help for usage ---#
+#--- Help for usage / common connects ---#
 
-if [[  $1 == -h ]]; then
+if [[  $1 == -h  ]]; then
   echo "Usage: connect [IP/List] ['Command to be executed']"
   echo "Ex: connect 10.0.0.1 'uname -a'"
   echo "****Command should be in quotations****"
@@ -16,14 +16,19 @@ fi
 
 #--- SSH Connect Script ---#
 
-echo -n "Enter your username:"
+echo -n "Enter your Username:"
 read un
+
+echo -n "Enter your password:"
+read -s pass
 
 if [[  -f ${iparg} ]];
     then
       for i in `cat $iparg` ;
         do
-          ssh -q -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null $un@$i $cmd;
+          echo $i
+          sshpass -p $pass ssh -q -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null  $un@$i $cmd;
+          echo "--------------------------------"
         done
 elif [[ $# -eq 0 ]];
     then
